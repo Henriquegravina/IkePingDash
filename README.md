@@ -7,9 +7,13 @@ every 30 seconds a ping is sent to each host.
 If the host respond to the ping it´s label goes green, if not goes red.
 
 To use:
-#git clone https://github.com/Henriquegravina/IkePingDash.git
-#cd IkePingDash
-#npm install
-#node IkePingDash.js
+
+ ```sh  
+git clone https://github.com/Henriquegravina/IkePingDash.git
+cd IkePingDash
+npm install
+node IkePingDash.js
+```
+
 
 Service will be up on http://ip-addr:3500/
