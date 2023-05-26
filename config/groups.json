@@ -1,0 +1,7 @@
+[
+    { "id":"g1" ,"name":"Network" },
+    { "id":"g2" ,"name":"Server" },
+    { "id":"g3" ,"name":"Virtualized" },
+    { "id":"g4" ,"name":"Appliances" },
+    { "id":"g5" ,"name":"Internet" }
+]

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IkePingDash</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <style>
+	@font-face {
+            font-family: myFirstFont;
+            src: url("ttf/Nunito-Light.ttf");
+        }  
+        body {
+            font-family: myFirstFont;
+        }
+        .grid-item {
+            flex-basis: 12.5%;
+            min-width: 8em;
+            max-width: 8em;
+        }
+        .host_container{
+                max-width: 28em;
+        }
+       </style>
+    </head>
+    <body>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/jquery-3.3.1.min.js"></script>
+        <div class="row m-2"  style="height: 50%;" id="topContainer">
+                <div class="container-fluid"> 	
+                        <div class="row" id="baserow">     
+                                <!-- Groups -->
+                        </div>
+                </div>
+	</div>
+       <script>
+            var socket = io();
+
+            const base_row = document.getElementById('baserow')
+
+            socket.on('hosts_list', function(host_list){
+                host_list.forEach(element => {
+                        if(!document.getElementById(element.id)){
+                                var new_div = document.createElement("SPAN");
+                                new_div.className = 'grid-item badge text-bg-secondary rounded-pill' ;
+                                new_div.id=`${element.id}`;
+                                new_div.innerHTML=`${element.caption}`;
+                                host_list_div = document.getElementById(element.group)
+                                host_list_div.appendChild(new_div)
+                                
+                        }                      
+                });
+            });
+
+            socket.on('groups_list', function(groups_list){
+                console.log(groups_list)
+                groups_list.forEach(element => {
+                        if(!document.getElementById(element.id)){
+                                // Title of group box
+                                var group_title_div = document.createElement("div");
+                                group_title_div.className = 'bg-primary'
+                                group_title_div.innerHTML =`${element.name}`;
+                                // Group box
+                                var group_box_div = document.createElement("div");
+                                group_box_div.className = 'host_container m-2 col-4 w-100 border border-primary bg-light' ;
+                                group_box_div.id=`${element.id}`;
+                                group_box_div.appendChild(group_title_div);
+                                // Add to main div
+                                base_row.appendChild(group_box_div);
+                        }                      
+                });
+            });
+
+            socket.on('result', function(state) {
+                host_div = document.getElementById(state.id);
+                if( state.host_status === 1) { host_div.className = 'grid-item badge text-bg-success rounded-pill' } // Success
+                else if( state.host_status === 0) { host_div.className = 'grid-item badge text-bg-danger rounded-pill' } // Danger
+                else{ host_div.className = 'grid-item badge text-bg-warning rounded-pill' } // Warning
+            });
+
+        </script>
+    </body>
+</html>
