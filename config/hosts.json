@@ -1,22 +1,22 @@
-
 [
-    { "id": "host1", "caption":"Router", "address": "192.168.0.1", "group":"g1" },
-    { "id": "host3", "caption":"SwitchHP", "address": "192.168.0.2", "group":"g1" },
-    { "id": "host12","caption":"Accesspoint1", "address": "192.168.0.3", "group":"g1" },
-    { "id": "host13","caption":"Accesspoint2", "address": "192.168.0.4", "group":"g1" },
-    { "id": "host14","caption":"Accesspoint3", "address": "192.168.0.5", "group":"g1" },
- 
-    { "id": "host4", "caption":"VPS-Server", "address": "192.168.0.10", "group":"g2" },
-    { "id": "host15","caption":"NTP-Server", "address": "192.168.0.11", "group":"g2" },  
-    
-    { "id": "host7", "caption":"HomeAssistant", "address": "192.168.0.20", "group":"g3" },
-    { "id": "host11","caption":"Unifi", "address": "192.168.0.21","group":"g3" },
-    { "id": "host8", "caption":"Mqtt", "address": "192.168.0.22","group":"g3" },
+  {
+    "id": "host1",
+    "caption": "Router",
+    "address": "192.168.0.1",
+    "group": "g1"
+  },
+  {
+    "id": "host12",
+    "caption": "Accesspoint1",
+    "address": "192.168.0.3",
+    "group": "g1"
+  },
 
-    { "id": "host6", "caption":"SmartLamp", "address": "192.168.0.200","group":"g4" },
-    { "id": "host9", "caption":"Wheather", "address": "192.168.0.201","group":"g4" },
-    { "id": "host10","caption":"SunnyBoy5.0", "address": "192.168.0.202","group":"g4" },
-
-    { "id": "host99", "caption":"Google", "address": "8.8.8.8","group":"g5" }
+  { "id": "host99", "caption": "Google", "address": "8.8.8.8", "group": "g2" },
+  {
+    "id": "host99",
+    "caption": "Github",
+    "address": "140.82.114.4",
+    "group": "g2"
+  }
 ]
-

@@ -1,6 +1,15 @@
 {
+  "name": "IkePingDash",
+  "version": "1.0.0",
+  "description": "his is a simple JS app to monitor if some hosts are UP by ping them.",
+  "main": "IkePingDash.js",
+  "scripts": {
+    "start": "node IkePingDash.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^4.4.0"
-  }
+  },
+  "author": "Henrique B. Gravina",
+  "license": "GPL"
 }
