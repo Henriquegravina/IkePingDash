@@ -8,12 +8,14 @@ If the host respond to the ping it´s label goes green, if not goes red.
 
 To use:
 
- ```sh  
+```sh
 git clone https://github.com/Henriquegravina/IkePingDash.git
 cd IkePingDash
 npm install
 node IkePingDash.js
 ```
 
-
 Service will be up on http://ip-addr:3500/
+
+Example on Vercel: https://ike-ping-dash.vercel.app/
+Vercel does not allo ping to run :(
