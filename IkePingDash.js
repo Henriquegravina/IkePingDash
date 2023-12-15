@@ -71,3 +71,5 @@ app.use(express.static(dir));
 http.listen(3500, function () {
   console.log("Listening on *:3500");
 });
+
+module.exports = app;
