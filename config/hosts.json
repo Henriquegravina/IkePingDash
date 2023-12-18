@@ -13,8 +13,9 @@
   },
 
   { "id": "host99", "caption": "Google", "address": "8.8.8.8", "group": "g2" },
+
   {
-    "id": "host99",
+    "id": "host98",
     "caption": "Github",
     "address": "140.82.114.4",
     "group": "g2"
