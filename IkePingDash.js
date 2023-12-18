@@ -8,14 +8,17 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 
-const app = require("express")();
-const http = require("http").Server(app);
-const io = require("socket.io")(http);
-var path = require("path");
-const express = require("express");
-
 var path = require("path");
 dir = path.join(__dirname);
+
+const express = require("express");
+const { createServer } = require("node:http");
+const { join } = require("node:path");
+const { Server } = require("socket.io");
+
+const app = express();
+const server = createServer(app);
+const io = new Server(server);
 
 // Read hosts list from config/hosts.json file
 const hosts_list = JSON.parse(fs.readFileSync(dir + "/config/hosts.json"));
@@ -64,15 +67,11 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/html/dashboard.html");
 });
 
-app.get("/socket.io/socket.io.js", (req, res) => {
-  res.sendFile(__dirname + "/node_modules/socket.io/client-dist/socket.io.js");
-});
-
 var dir = path.join(__dirname, "/html");
 app.use(express.static(dir));
 
 // Start the server
-http.listen(3500, function () {
+server.listen(3500, function () {
   console.log("Listening on *:3500");
 });
 
