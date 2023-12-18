@@ -16,3 +16,15 @@ node IkePingDash.js
 ```
 
 Service will be up on http://ip-addr:3500/
+
+Add Dockerfile to build a docker image:
+
+```
+docker build --tag pingdash .
+```
+
+To run with external config dir:
+
+```
+docker run --publish 3500:3500 -v ./config/:/app/config pingdash
+```
