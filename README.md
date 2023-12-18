@@ -16,6 +16,3 @@ node IkePingDash.js
 ```
 
 Service will be up on http://ip-addr:3500/
-
-Example on Vercel: https://ike-ping-dash.vercel.app/
-Vercel does not allo ping to run :(
