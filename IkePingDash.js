@@ -64,6 +64,10 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/html/dashboard.html");
 });
 
+app.get("/socket.io/socket.io.js", (req, res) => {
+  res.sendFile(__dirname + "/node_modules/socket.io/client-dist/socket.io.js");
+});
+
 var dir = path.join(__dirname, "/html");
 app.use(express.static(dir));
 
