@@ -22,14 +22,20 @@ const io = new Server(server);
 
 // Read hosts list from config/hosts.json file
 const hosts_list = JSON.parse(fs.readFileSync(dir + "/config/hosts.json"));
-
 // Read groups definitions
 const groups_list = JSON.parse(fs.readFileSync(dir + "/config/groups.json"));
 
 // When a client connects, send the host list
 io.on("connection", function (socket) {
   io.emit("groups_list", groups_list);
-  io.emit("hosts_list", hosts_list);
+
+  hosts_list.forEach((element) => {
+    io.emit("hosts_list", {
+      id: element.id,
+      caption: element.caption,
+      group: element.group,
+    });
+  });
 
   // Ping all hosts and send the results to clients
   pingAllHosts(hosts_list);
@@ -47,6 +53,7 @@ async function pingAllHosts(hosts) {
 // Ping a host
 function pingHost(host) {
   return new Promise((resolve, reject) => {
+    console.log(`ping to ${host}`);
     exec(`ping -c 1 ${host}`, (error, stdout, stderr) => {
       if (error) {
         resolve({ host, result: 0 });

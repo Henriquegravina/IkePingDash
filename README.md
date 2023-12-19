@@ -26,5 +26,5 @@ docker build --tag pingdash .
 To run with external config dir:
 
 ```
-docker run --publish 3500:3500 -v ./config/:/app/config pingdash
+docker run --publish 3500:3500 -v ./config/:/app/config henriquegravina/ikepingdash
 ```
