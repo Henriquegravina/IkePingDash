@@ -11,6 +11,12 @@
     "address": "192.168.0.3",
     "group": "g1"
   },
+  {
+    "id": "hostLocal",
+    "caption": "LocalHost",
+    "address": "127.0.0.1",
+    "group": "g1"
+  },
 
   { "id": "host99", "caption": "Google", "address": "8.8.8.8", "group": "g2" },
 
