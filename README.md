@@ -31,6 +31,8 @@ docker run --publish 3500:3500 -v ./config/:/app/config pingdash
 
 
 if you want to run the image from Docker Hub:
+```
 docker run --publish 3500:3500 -v ./config/:/app/config henriquegravina/ikepingdash
+```
 
 
