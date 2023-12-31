@@ -41,13 +41,16 @@ io.on("connection", function (socket) {
   pingAllHosts(hosts_list);
 });
 
-// Ping all hosts and emit socket results, one by one
+// Ping all hosts and emit socket results.
 async function pingAllHosts(hosts) {
-  for (const element of hosts) {
+  const pingPromises = hosts.map(async (element) => {
     const result = await pingHost(element.address);
     const host_result = { id: element.id, host_status: result.result };
     io.emit("result", host_result);
-  }
+    return host_result;
+  });
+
+  const results = await Promise.all(pingPromises);
 }
 
 // Ping a host
