@@ -6,6 +6,8 @@ every 30 seconds a ping is sent to each host.
 
 If the host respond to the ping it´s label goes green, if not goes red.
 
+![alt text](doc/img/screen1.png)
+
 To use:
 
 ```sh
