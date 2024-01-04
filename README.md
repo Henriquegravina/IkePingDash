@@ -6,7 +6,7 @@ every 30 seconds a ping is sent to each host.
 
 If the host respond to the ping it´s label goes green, if not goes red.
 
-![alt text](doc/img/screen1.png)
+<p><img src="doc/img/screen1.png" height="200">
 
 To use:
 
@@ -31,10 +31,8 @@ To run with external config dir:
 docker run --publish 3500:3500 -v ./config/:/app/config pingdash
 ```
 
-
 if you want to run the image from Docker Hub:
+
 ```
 docker run --publish 3500:3500 -v ./config/:/app/config henriquegravina/ikepingdash
 ```
-
-
