@@ -36,3 +36,19 @@ if you want to run the image from Docker Hub:
 ```
 docker run --publish 3500:3500 -v ./config/:/app/config henriquegravina/ikepingdash
 ```
+
+To use this on a Microtik container is very simple ( Testes on CHR Version 7.15 ):
+
+
+Upload the config files:
+<p><img src="doc/img/pingDashMikrotikFiles.png" height="200">
+
+Create the Mount point:
+<p><img src="doc/img/pingDashMikrotikMount.png" height="200">
+
+Add the cointainer:
+<p><img src="doc/img/pingDashMikrotikContainer.png" height="200">
+
+At the end don´t forget to adjust the firewall settings 
+
+
