@@ -8,8 +8,6 @@
 const { exec } = require("child_process");
 const fs = require("fs");
 
-var path = require("path");
-dir = path.join(__dirname);
 
 const express = require("express");
 const { createServer } = require("node:http");
@@ -20,10 +18,47 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server);
 
+// Default values when config files does not exist:
+// hosts.json
+const defaultHostsContent = [ 
+  { "id": "hostLocal",  "caption": "LocalHost",  "address": "127.0.0.1",  "group": "g1" },
+  { "id": "host99", "caption": "Google", "address": "8.8.8.8", "group": "g2" }
+];
+// goups.json
+const defaultGroupsContent = [
+    { "id": "g1", "name": "Appliances" },
+    { "id": "g2", "name": "Internet" }
+  ];
+
+
+
+var path = require("path");
+const dir = __dirname; // App dir
+const configPath = path.join(dir, "config"); 
+
+const hostsFilePath = path.join(configPath, "hosts.json");
+const groupsFilePath = path.join(configPath, "groups.json");
+
+if (!fs.existsSync(configPath)) {
+  fs.mkdirSync(configPath);
+}
+
+
+if (!fs.existsSync(hostsFilePath)) {
+  fs.writeFileSync(hostsFilePath, JSON.stringify(defaultHostsContent, null, 2));
+}
+
+if (!fs.existsSync(groupsFilePath)) {
+  fs.writeFileSync(groupsFilePath, JSON.stringify(defaultGroupsContent, null, 2));
+}
+
 // Read hosts list from config/hosts.json file
-const hosts_list = JSON.parse(fs.readFileSync(dir + "/config/hosts.json"));
-// Read groups definitions
-const groups_list = JSON.parse(fs.readFileSync(dir + "/config/groups.json"));
+const hosts_list = JSON.parse(fs.readFileSync(hostsFilePath));
+const groups_list = JSON.parse(fs.readFileSync(groupsFilePath));
+
+
+
+
 
 // When a client connects, send the host list
 io.on("connection", function (socket) {
@@ -77,8 +112,8 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + "/html/dashboard.html");
 });
 
-var dir = path.join(__dirname, "/html");
-app.use(express.static(dir));
+var html_dir = path.join(__dirname, "/html");
+app.use(express.static(html_dir));
 
 // Start the server
 server.listen(3500, function () {
